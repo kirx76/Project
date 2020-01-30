@@ -260,7 +260,7 @@ def checkreal(message):
             if int(res['user_real']) > 0:
                 task += str(res['id']) + '\n'
             res = conn.fetchone()
-        bot.send_message(message.chat.id, 'Пользователи, которые хотят реал: \n' + task)
+        bot.send_message(message.chat.id, 'Пользователи, которые хотят большего: \n' + task)
         connection.close()
 
 
@@ -268,7 +268,7 @@ def checkreal(message):
 def my(message):
     info = getinfo(message)
     if (info['user_balance']) >= 1000 and int(info['user_real']) == 0:
-        bot.send_message(message.chat.id, 'Хочешь играть на реальные деньги?\nПиши /real')
+        bot.send_message(message.chat.id, 'Хочешь играть по крупному?\nПиши /real')
     if info['play_count'] >= 1:
         persent = round((int(info['play_wins']) / int(info['play_count']) * 100), 1)
         bot.send_message(message.chat.id, '<b>Ваша информация</b>\nВсего игр: ' + str(
@@ -286,7 +286,7 @@ def start(message):
     bot.send_message(message.chat.id, '1000 баланса -> новая кнопка в ЛК')
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     bot.send_message(message.chat.id,
-                     'Бот не несет ответственности за оставленные в нем деньги.\nПравила игры: 21 очко на 36 карт.',
+                     'Бот не несет ответственности за оставленные в нем нервы.\nПравила игры: 21 очко на 36 карт.',
                      parse_mode='HTML')
     markup.add('Да', 'Нет', 'Правила')
     sent = bot.send_message(message.chat.id,
@@ -383,7 +383,7 @@ def register(message):
         markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
         markup.add('/start', 'Правила')
         bot.send_message(message.chat.id,
-                         '<b>Правила бота:</b> \n<b>1.</b>Перед игрой надо пополнить баланс.\n<b>2.</b>За поддержкой обращаться к @JackyLuck\n<b>3.</b>Выиграть не сложно, главное знать как.\n<b>4.</b>При условии начала использования бота (без принятия правил), правила со стороны пользователя принимаются автоматически\n<b>n</b>.Создатель бота имеет право хранить и обрабатывать ваши данные.',
+                         '<b>Правила бота:</b> \n<b>1.</b>Перед игрой надо пополнить баланс.\n<b>2.</b>За поддержкой обращаться к @\n<b>3.</b>Выиграть не сложно, главное знать как.\n<b>4.</b>При условии начала использования бота (без принятия правил), правила со стороны пользователя принимаются автоматически\n<b>n</b>.Создатель бота имеет право хранить и обрабатывать ваши данные.',
                          parse_mode='HTML', reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Вы не приняли правила, использование бота без принятия правил невозможно!",
