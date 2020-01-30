@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Профиль{% end %}
+
+{% block links %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/deauth">Выход</a>
+        </li>
+    </ul>
+
+</div>
+{% end %}
+
+{% block content %}
+<div class="profile_content">
+    <div class="profile_main">
+        <form action="/profile" method="post" enctype="multipart/form-data">
+            <div class="profile-group">
+                <label for="user_name">Имя пользователя</label>
+                <input type="text" class="form-control" id="user_name" placeholder="Введите ваше имя" name="user_name"
+                       value="{{user_info['user_name']}}">
+            </div>
+            <div class="profile-group">
+                <label for="user_mail">Почта</label>
+                <input type="text" class="form-control" id="user_mail" placeholder="Введите вашу почту" name="user_mail"
+                       value="{{user_info['mail']}}">
+            </div>
+            <div class="profile-group">
+                <label for="user_password">Пароль</label>
+                <fieldset id="password_fieldset">
+                    <input type="password" class="form-control" id="user_password" placeholder="Введите ваш пароль"
+                           name="user_password"
+                           value="{{user_info['password']}}">
+                </fieldset>
+            </div>
+
+
+            <div class="profile-group">
+                <label for="user_post_count">Количество опубликованных вами постов</label>
+                <fieldset disabled>
+                    <input type="text" class="form-control" id="user_post_count"
+                           value="{{user_info['count_posts']}}">
+                </fieldset>
+                <label for="user_login">Ваш логин</label>
+                <fieldset disabled>
+                    <input type="text" class="form-control" id="user_login"
+                           value="{{user_info['login']}}">
+                </fieldset>
+            </div>
+            <div class="row m-1">
+                <div class="col m-1">
+                    <img src="{{user_info['user_image_url']}}" alt="Изображение пользователя" id="user_photo">
+                </div>
+                <form action="/profile" method="post" enctype="multipart/form-data">
+                    <div class="col m-1">
+                        <div class="row m-2">
+                            <input type="file" class="form-control-file" id="profile_image"
+                                   name="user_image_url"
+                                   accept="image/jpeg,image/png" required>
+                        </div>
+                        <div class="row m-2">
+                            <button id="accept_to_change_profile" class="btn btn-primary" type="submit">Сохранить
+                                изменения
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </form>
+
+
+<!--        <script>-->
+<!--            button_switch_password.onclick = function () {-->
+<!--                $("#password_fieldset")[0].disabled = false;-->
+<!--            };-->
+<!--        </script>-->
+    </div>
+</div>
+{% end %}
+{% block script %}
+{% end %}

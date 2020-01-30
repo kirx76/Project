@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>{% block title %}{% end %} — My site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="../../static/js/js.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link href="../../static/favicon.ico" rel="icon" type="image/x-icon"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <!-- fancyBox3 CSS -->
+    <link href="static/css/jquery.fancybox.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
+<script src="../../static/js/snowstorm.js"></script>
+
+<body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">My Site</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" id="general_link">
+                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+            </li>
+            {% if user_info['isadmin'] > 0 %}
+                <li class="nav-item" id="admin_link">
+                    <a class="nav-link" href="/adminpanel">Админ-панель</a>
+                </li>
+            {% end %}
+            <li class="nav-item rounded-circle" id="user_image" style="margin-top: 1%; background-color: white; width: 32px; height: 32px">
+                <img class="rounded-circle" src="../{{user_info['user_image_thumbnail_url']}}" width="32" height="32">
+            </li>
+            <li class="nav-item mr-auto" id="hprofile_link" >
+                <a class="nav-link" href="/profile" id="profile_link">{{user_info['login']}}</a>
+            </li>
+
+        </ul>
+        {% block links %}
+        {% end %}
+        <script>
+            var element = document.getElementById(activator(document.URL));
+            element.classList.add("active");
+        </script>
+
+    </div>
+</nav>
+
+<div class="content" style="margin-top: 56px;">
+
+    {% block content %}{% end %}
+
+
+</div>
+{% block script %}{% end %}
+</body>
+</html>

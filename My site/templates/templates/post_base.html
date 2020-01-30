@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block title %}Обзор поста{% end %}
+
+{% block links %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/deauth">Выход</a>
+        </li>
+    </ul>
+</div>
+{% end %}
+
+{% block content %}
+<div class="main_content">
+
+    {% for item in first_posts %}
+
+    <div class="posts">
+        <div class="row-2">
+            <img src="{{item['main_image_url']}}" alt="Картинка" align="left" vspace="5"
+                 hspace="5">
+            <h1>{{item['post_name']}}</h1>
+            <div class="post_short_info">
+                <h4>{{item['short_info']}}</h4>
+            </div>
+        </div>
+
+
+        <div class="post_long_info">
+            <h5>{{item['long_info']}}</h5>
+        </div>
+
+        <div class="post_info">
+            <div class="row">
+                <div class="col">
+                    <h6>Автор: {{item['author']}}</h6>
+                    <h6>Дата публикации: {{item['post_time']}}</h6>
+                    <h6 id="tags{{item['tags']}}">Тэги: </h6>
+                    <script>
+                        document.getElementById("tags{{item['tags']}}").innerHTML = "Тэги: " + tag_parser("{{item['tags']}}");
+                    </script>
+                </div>
+                <div class="col">
+                    <form method="post" class="remove_post_button">
+                        <div class="delete_post_button">
+                            <button type="submit" class="btn btn-danger" id="delete_post_button">X</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col" id="comments_text">
+        <h2>Комментарии: </h2>
+    </div>
+    <div class="col" id="comments_in_post">
+        {% for comment in comments %}
+
+        <div class="row" id="comment">
+            <div class="col-2 m-1" id="comment_info">
+                <div class="row m-2"><img class="rounded-circle" src="../{{comment['user_image_thumbnail_url']}}"
+                                          width="32" height="32"></div>
+                <div class="row m-2">{{comment['author']}}</div>
+                <div class="row m-2">{{comment['comment_time']}}</div>
+            </div>
+
+            <div class="col m-1" id="comment_text">
+                <div class="row">{{comment['comment']}}</div>
+            </div>
+        </div>
+
+        {% end %}
+        <div class="col" id="add_comment">
+
+            <form method="post" class="form-groups">
+                <div class="form-groups">
+                    <label for="add_comment_text">Введите свой комментарий</label>
+                    <textarea class="form-control" id="add_comment_text" rows="3" name="comment_text"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Опубликовать</button>
+
+            </form>
+
+
+        </div>
+
+        <script>
+            $('.post_short_info').each(function () {
+                var $this = $(this);
+                var t = $this.text();
+                $this.html(decodeHTMLEntities(t));
+            });
+            $('.post_long_info').each(function () {
+                var $this = $(this);
+                var t = $this.text();
+                $this.html(decodeHTMLEntities(t));
+            });
+            if ("{{user_info['login']}}" !== "{{item['author']}}")
+                document.getElementById("delete_post_button").remove();
+        </script>
+
+        {% end %}
+
+    </div>
+    {% end %}
+    {% block script %}
+    {% end %}
+</div>

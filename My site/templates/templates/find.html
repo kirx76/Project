@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Результаты поиска{% end %}
+
+{% block links %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/deauth">Выход</a>
+        </li>
+    </ul>
+
+    <form action="/find" method="post" class="form-inline my-2 my-lg-0">
+        <input type="search" class="form-control mr-sm-2" id="search_line" placeholder="Поиск" name="search_line">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Sign in">Поиск</button>
+    </form>
+</div>
+{% end %}
+
+{% block content %}
+<div class="main_content">
+    <div class="find_results">
+        <h1>Результаты поиска</h1>
+    </div>
+
+    {% for item in first_posts %}
+
+   <div class="posts" id="posts">
+        <div class="row-2">
+            <img src="{{item['main_image_url']}}" alt="Картинка" align="left" vspace="5"
+                 hspace="5">
+            <div class="col">
+                <div class="row">
+                    <h1>{{item['post_name']}}</h1>
+                </div>
+                <div class="row">
+                    <div class="post_short_info" id="post_short_info">
+                        <h4>{{item['short_info']}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="post_info">
+            <div class="row">
+                <div class="col">
+                    <h6>Автор: {{item['author']}}</h6>
+                    <h6>Дата публикации: {{item['post_time']}}</h6>
+                    <h6 id="tags{{item['tags']}}">Тэги: </h6>
+                    <script>
+                        document.getElementById("tags{{item['tags']}}").innerHTML = "Тэги: " + tag_parser("{{item['tags']}}");
+                    </script>
+                </div>
+                <div class="col text-right" id="more_info_button">
+                    <a href="/post/{{item['id']}}" class="btn btn-secondary btn-lg" role="button"
+                       aria-disabled="true">Подробнее</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        $('.post_short_info').each(function () {
+            var $this = $(this);
+            var t = $this.text();
+            $this.html(decodeHTMLEntities(t));
+        });
+
+
+    </script>
+
+    {% end %}
+
+</div>
+{% end %}
+{% block script %}
+{% end %}

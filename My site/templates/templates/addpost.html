@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Добавить пост{% end %}
+
+{% block links %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item" id="addpost_link">
+            <a class="nav-link" href="/addpost">Добавить пост</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/deauth">Выход</a>
+        </li>
+    </ul>
+
+</div>
+{% end %}
+
+
+{% block content %}
+<div class="add_post_content">
+    <div class="col">
+        <form action="/addpost" method="post" enctype="multipart/form-data">
+
+            <label for="publication_name">Название публикации</label>
+            <input type="text" class="form-control" id="publication_name" name="post_name"
+                   placeholder="Введите название поста (не более 90 символов)" maxlength="90">
+
+            <label for="short_information">Краткая информация</label>
+            <textarea class="form-control" id="short_information" rows="3" name="short_info"
+                      placeholder="Введите краткую информацию (не более 250 символов)"
+                      maxlength="250"></textarea>
+
+            <script>
+                $('#short_information').summernote({
+                    placeholder: 'Введите краткую информацию (не более 250 символов)',
+                    tabsize: 2,
+                    height: 100,
+                    maxLength: 250
+                });
+            </script>
+
+            <label for="long_information">Полная информация</label>
+            <!--                <div id="summernote_long"></div>-->
+
+            <textarea class="form-control" id="long_information" rows="3" name="long_info"
+                      placeholder="Введите полную информацию"></textarea>
+            <script>
+                $('#long_information').summernote({
+                    placeholder: 'Введите полную информацию',
+                    tabsize: 2,
+                    height: 100
+                });
+            </script>
+
+            <label for="main_image">Выберите главную картинку</label>
+            <input type="file" class="form-control-file" id="main_image" name="main_image"
+                   accept="image/jpeg,image/png" required>
+
+            <label for="publication_tags">Тэги</label>
+            <input type="text" class="form-control" id="publication_tags"
+                   placeholder="Вводите тэги через запятую"
+                   name="tags">
+
+            <button type="submit" class="btn btn-primary" value="Sign in" id="accept_post">Опубликовать</button>
+
+
+        </form>
+
+
+    </div>
+</div>
+{% end %}
+{% block script %}
+{% end %}

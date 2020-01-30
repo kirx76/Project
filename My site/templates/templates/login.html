@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Авторизация — My site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="../../static/js/js.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <link href="../../static/favicon.ico" rel="icon" type="image/x-icon"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+
+</head>
+<script src="../../static/js/snowstorm.js"></script>
+
+<body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">My Site</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" id="general_link">
+                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" id="authorization_link">
+                <a class="nav-link" href="/login">Авторизация<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" id="registration_link">
+                <a class="nav-link" href="/register">Регистрация<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
+        <script>
+            var element = document.getElementById(activator(document.URL));
+            element.classList.add("active");
+        </script>
+
+    </div>
+</nav>
+
+<div class="container" style="margin-top: 56px;">
+
+    <form action="/login" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Login</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter login" name="login">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                   name="password">
+        </div>
+        <button type="submit" class="btn btn-primary" value="Sign in">Submit</button>
+    </form>
+
+
+</div>
+
+</body>
+</html>
