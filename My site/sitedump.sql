@@ -100,7 +100,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (12,'kirx','769323vS','ekirichenk8@gmail.com','kirx',1,'Егор','static/user_image/99054c0b1656d1f984255efc2ab3ad41.png','static/user_image/thumbnail/99054c0b1656d1f984255efc2ab3ad41.png',3);
+INSERT INTO `users` VALUES (12,'kirx','passwords123','ekirichenk8@gmail.com','kirx',1,'Егор','static/user_image/99054c0b1656d1f984255efc2ab3ad41.png','static/user_image/thumbnail/99054c0b1656d1f984255efc2ab3ad41.png',3);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
