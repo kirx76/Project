@@ -11,7 +11,7 @@ from tornado import escape
 import connections
 
 settings = {
-    "cookie_secret": "61oETzKXQAGaYdk333EmGeJfdfdh12345ddsa2JFuYh7EQnp2XdTP1o/Vo=",
+    "cookie_secret": "SECRETCODE",
     "login_url": "/login",
 }
 
